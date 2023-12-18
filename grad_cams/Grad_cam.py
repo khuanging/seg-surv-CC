@@ -29,8 +29,7 @@ class GradCAM:
 
     @staticmethod
     def get_cam_weights(grads):
-        # GAP全局平均池化，得到大小为[B,C,1,1]
-        # 因为我们输入一张图，所以B=1，C为特征层的通道数
+        # 2d mean (2, 3) -> 3d图像 后面只展示矢状面则mean(3, 4)
         return np.mean(grads, axis=(3, 4), keepdims=True)
 
     @staticmethod
